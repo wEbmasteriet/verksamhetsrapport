@@ -1,0 +1,30 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Mall för wEbmästeriets verksamhetsrapport.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[swedish, paper=a4, fontsize=11pt]{letter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[TU]{fontenc}
+\usepackage[swedish]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage[swedish,style=iso,useregional,showdow,calc]{datetime2}
+\usepackage{amssymb} % loads amsfonts
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\DTMsetregional{}
+\usepackage{svg}
+
+\begin{document}
+\includesvg[
+    width=20cm,
+    height=8cm,
+    angle=-12.5,
+]{wEb.svg}
+\end{document}

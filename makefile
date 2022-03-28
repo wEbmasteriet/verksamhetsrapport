@@ -1,12 +1,11 @@
 AUXDIR    := aux
 OUTDIR    := output
-PLOTDIR   := plots
 
 TEXFILES  := rapport.tex
 DRAFTMODE := #-draftmode
 TEXMKARGS := -emulate-aux-dir -auxdir=$(AUXDIR) -outdir=$(OUTDIR) -lualatex
 
-watch: $(PLOTDIR) $(TEXFILES)
+watch: $(TEXFILES)
 	@latexmk \
 		$(TEXMKARGS) \
 		-halt-on-error \
@@ -16,26 +15,22 @@ watch: $(PLOTDIR) $(TEXFILES)
 		-view=none \
 		$(TEXFILES)
 
-rapport.pdf: $(PLOTDIR) $(TEXFILES)
+rapport.pdf: $(TEXFILES)
 	@latexmk \
 		$(TEXMKARGS) \
 		-halt-on-error \
 		-shell-escape \
 		$(TEXFILES)
 
-$(PLOTDIR):
-	@mkdir $@
-
 clean:
-	find $(PLOTDIR) -type f -delete
-	rm -rf $(AUXDIR) $(OUTDIR)
-	rm -f rapport.pdf
 	latexmk $(TEXMKARGS) -quiet -norc -rc-report- -c
+	rm -f rapport.pdf
+	rm -rf $(AUXDIR) $(OUTDIR)
 
 distclean:
-	rm -f $(shell sed -n '/^[*]\.[[:alnum:]][[:alnum:]]*$$/p' .gitignore)
-	rm -rf $(PLOTDIR) $(AUXDIR) $(OUTDIR)
-	rm -f rapport.pdf
 	latexmk $(TEXMKARGS) -quiet -norc -rc-report- -C
+	rm -f $(shell sed -n '/^[*]\.[[:alnum:]][[:alnum:]]*$$/p' .gitignore)
+	rm -f rapport.pdf
+	rm -rf $(AUXDIR) $(OUTDIR)
 
 _PHONY: clean distclean watch
