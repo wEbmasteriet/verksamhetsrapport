@@ -1,30 +1,63 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% Mall för wEbmästeriets verksamhetsrapport.
+%% Template for wEbmästeriet's activity report.
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[swedish, paper=a4, fontsize=11pt]{letter}
+\documentclass[swedish, a4paper, 11pt]{letter}
 
 \usepackage[utf8]{inputenc}
 \usepackage[TU]{fontenc}
 \usepackage[swedish]{babel}
 \usepackage[autostyle]{csquotes}
 \usepackage[swedish,style=iso,useregional,showdow,calc]{datetime2}
-\usepackage{amssymb} % loads amsfonts
+\usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage{fontspec}
-\setmainfont{Latin Modern Roman}
 \usepackage{unicode-math}
+\usepackage{svg}
+\usepackage{tikzpagenodes}
+\usepackage{lipsum}
+\usetikzlibrary{backgrounds}
+\setmainfont{Latin Modern Roman}
 \setmathfont{Latin Modern Math}
 \DTMsetregional{}
-\usepackage{svg}
 
 \begin{document}
-\includesvg[
-    width=20cm,
-    height=8cm,
-    angle=-12.5,
-]{wEb.svg}
+
+%%
+%% Header
+%%
+\vbox{
+    \hspace{2.5cm}\hbox{
+        \parbox{5cm}{
+            \textbf{\LARGE{wEbmästeriet}}\par
+            \large{Werksamhetsrapport LP\#}
+        }
+    }
+}
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=mid west,inner sep=0pt] at (current page text area.west|-0,0cm) {
+    \includesvg[
+        width=2cm,
+        height=2cm,
+        angle=0,
+    ]{wEb.svg}
+};
+\end{tikzpicture}
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+%%
+%% Content
+%%
+
+\lipsum[2]
+
+
+%% Finito
 \end{document}
